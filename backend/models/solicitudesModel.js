@@ -17,16 +17,16 @@ export const getAllSolicitudes = (callback) => {
       m.especie AS especieMascota,
       m.raza AS razaMascota,
       m.imagen AS imagenMascota
-    FROM SolicitudAdopcion s
-    JOIN Usuario u ON s.idUsuario = u.idUsuario
-    JOIN Mascota m ON s.idMascota = m.idMascota
+    FROM solicitudadopcion s
+    JOIN usuario u ON s.idUsuario = u.idUsuario
+    JOIN mascota m ON s.idMascota = m.idMascota
     ORDER BY s.fechaSolicitud DESC
   `;
   db.query(sql, callback);
 };
 
 export const createSolicitud = (solicitud, callback) => {
-  const sql = "INSERT INTO SolicitudAdopcion (idUsuario, idMascota, mensaje) VALUES (?, ?, ?)";
+  const sql = "INSERT INTO solicitudadopcion (idUsuario, idMascota, mensaje) VALUES (?, ?, ?)";
   const values = [solicitud.idUsuario, solicitud.idMascota, solicitud.mensaje || null];
   db.query(sql, values, callback);
 };
@@ -41,18 +41,18 @@ export const getSolicitudById = (id, callback) => {
       m.nombre AS nombreMascota,
       m.especie AS especieMascota,
       m.raza AS razaMascota
-    FROM SolicitudAdopcion s
-    JOIN Usuario u ON s.idUsuario = u.idUsuario
-    JOIN Mascota m ON s.idMascota = m.idMascota
+    FROM solicitudadopcion s
+    JOIN usuario u ON s.idUsuario = u.idUsuario
+    JOIN mascota m ON s.idMascota = m.idMascota
     WHERE s.idSolicitud = ?
   `;
   db.query(sql, [id], callback);
 };
 
 export const updateSolicitudEstado = (id, estado, callback) => {
-  db.query("UPDATE SolicitudAdopcion SET estado = ? WHERE idSolicitud = ?", [estado, id], callback);
+  db.query("UPDATE solicitudadopcion SET estado = ? WHERE idSolicitud = ?", [estado, id], callback);
 };
 
 export const deleteSolicitud = (id, callback) => {
-  db.query("DELETE FROM SolicitudAdopcion WHERE idSolicitud = ?", [id], callback);
+  db.query("DELETE FROM solicitudadopcion WHERE idSolicitud = ?", [id], callback);
 };
