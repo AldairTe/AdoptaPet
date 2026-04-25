@@ -20,9 +20,9 @@ app.use(express.json());
 // Verificar conexión
 db.connect(err => {
   if (err) {
-    console.error("❌ Error al conectar a MySQL:", err);
+    console.error("Error al conectar a MySQL:", err);
   } else {
-    console.log("✅ Conexión exitosa a MySQL");
+    console.log("Conexión exitosa a MySQL");
   }
 });
 
@@ -37,4 +37,4 @@ app.use("/api/logs", logsRoutes);
 
 // Servidor
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`🚀 Servidor corriendo en puerto ${PORT}`));
+app.listen(PORT, () => console.log(`Servidor corriendo en puerto ${PORT}`));

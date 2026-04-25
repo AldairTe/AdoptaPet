@@ -7,14 +7,17 @@ import {
   editarUsuario,
   eliminarUsuario
 } from "../controllers/usuariosController.js";
+import { verifyToken, requireRole } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-router.get("/", listarUsuarios);
-router.get("/:id", obtenerUsuario);
 router.post("/register", registrarUsuario);
 router.post("/login", loginUsuario);
-router.put("/:id", editarUsuario);
-router.delete("/:id", eliminarUsuario);
+
+router.get("/", verifyToken, requireRole("administrador"), listarUsuarios);
+router.delete("/:id", verifyToken, requireRole("administrador"), eliminarUsuario);
+
+router.get("/:id", verifyToken, obtenerUsuario);
+router.put("/:id", verifyToken, editarUsuario);
 
 export default router;

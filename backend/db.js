@@ -12,7 +12,6 @@ const db = mysql.createConnection({
   port: process.env.DB_PORT || 3306
 });
 
-// Agrega manejadores de eventos para debug
 db.connect((err) => {
   if (err) {
     console.error("❌ Error DETAILED de conexión:", {
