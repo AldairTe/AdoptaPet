@@ -31,15 +31,23 @@ AdoptaPet/
 │   ├── controllers/
 │   │   ├── mascotasController.js
 │   │   ├── solicitudesController.js
-│   │   └── usuariosController.js
+│   │   ├── usuariosController.js
+│   │   ├── adopcionesController.js
+│   │   └── refugiosController.js
+│   ├── middleware/
+│   │   └── authMiddleware.js
 │   ├── models/
 │   │   ├── mascotasModel.js
 │   │   ├── solicitudesModel.js
-│   │   └── adopcionesModel.js
+│   │   ├── adopcionesModel.js
+│   │   ├── usuariosModel.js
+│   │   └── refugiosModel.js
 │   ├── routes/
 │   │   ├── mascotasRoutes.js
 │   │   ├── solicitudesRoutes.js
-│   │   └── usuariosRoutes.js
+│   │   ├── usuariosRoutes.js
+│   │   ├── adopcionesRoutes.js
+│   │   └── refugiosRoutes.js
 │   ├── db.js
 │   └── server.js
 └── frontend/
